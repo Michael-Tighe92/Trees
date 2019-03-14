@@ -2,6 +2,9 @@
 #include<iostream>
 #include "bTree.h"
 using namespace std;
+
+
+// main function
 int main()
 {
     bTree test;
