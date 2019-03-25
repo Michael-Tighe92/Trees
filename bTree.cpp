@@ -28,8 +28,8 @@ void bTree::insert(int value)
     }
 }
 
-void bTree::insert2(int value, node * root){
-
+void bTree::insert2(int value, node * root)
+{
     if(value < root->data){
         if(root->left != NULL){
             insert2(value, root->left);
@@ -49,8 +49,39 @@ void bTree::insert2(int value, node * root){
             root->right->left = NULL;
         }
     }
-
 }
+
+
+void bTree::insertLeft(int *arr, int start, int end) {
+    node * temp = new node;
+    temp = insertInorder(arr,start,end);
+    root->left = temp;
+}
+
+void bTree::insertRight(int *arr, int start, int end) {
+    node * temp = new node;
+    temp = insertInorder(arr,start,end);
+    root->right = temp;
+}
+
+
+node * bTree::insertInorder(int *arr, int start, int end) {
+    if (start == end)
+        return NULL;
+    int highest = start;
+    for (int i = start; i < end; i++)
+    {
+         if(arr[i] > arr[highest])
+             highest = i;
+    }
+    node * temp = new node;
+    temp->data=arr[highest];
+    temp->left = insertInorder(arr, start, highest);
+    temp->right = insertInorder(arr, highest+1, end);
+    return temp;
+}
+
+//----------------------------------------------------------------
 
 void bTree::display(){
     inorderDisplay(root);
@@ -65,8 +96,3 @@ void bTree::inorderDisplay(node * root){
     }
 }
 
-//void bTree::displayTree()
-//{
-//    node*temp=new node;
-//    temp =root;
-//}

@@ -12,7 +12,9 @@ public:
     ~bTree();
     void insert(int value);
     void insert2(int value, node * root);
-    void displayTree();
+    void insertLeft(int arr[],int start, int end);
+    void insertRight(int arr[],int start, int end);
+    node * insertInorder(int arr[], int start, int end);
     void display();
     void inorderDisplay(node * root);
 private:
